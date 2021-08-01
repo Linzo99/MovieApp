@@ -5,7 +5,19 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
-  },
-  "name": "MovieApp"
+    ],
+    "sdkVersion": "42.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.linzo.MovieApp"
+    },
+    "ios": {
+      "bundleIdentifier": "com.linzo.MovieApp"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  }
 }

@@ -1,4 +1,4 @@
-package com.movieapp;
+package com.linzo.MovieApp;
 
 import android.os.Bundle;
 
