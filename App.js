@@ -3,6 +3,7 @@ import React from 'react'
 import {StyleSheet} from 'react-native'
 import { Provider } from  'react-redux'
 import store from './store'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import TabNavigator from './components/navigation'
@@ -19,9 +20,11 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <NavigationContainer>
-          <TabNavigator/>
-        </NavigationContainer>
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <TabNavigator/>
+          </NavigationContainer>
+        </SafeAreaProvider>
       </Provider>
     </QueryClientProvider>
   );

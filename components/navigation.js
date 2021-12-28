@@ -47,12 +47,13 @@ const TabNavigator = () => {
             initialRouteName="home"
             screenOptions={({ route }) => ({
                 tabBarIcon:({focused, color, size})=>(
-                    <Icon name={route.name} size={size} color={color}/>
+                    <Icon name={route.name} size={size} color={focused ? 'red' : color}/>
                 ),
             })}
             tabBarOptions={{
                 style:{backgroundColor:'#424242',paddingBottom:3, borderTopWidth:0},
-                inactiveTintColor:'white'
+                inactiveTintColor:'white',
+                activeTintColor:'red',
             
             }}
         >

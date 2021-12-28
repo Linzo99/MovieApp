@@ -1,5 +1,6 @@
-import React, { useEffect, useState} from 'react';
-import { Text, ScrollView, View, StyleSheet, Dimensions, FlatList, TouchableWithoutFeedback, ActivityIndicator} from 'react-native';
+import React, { useState} from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, View, StyleSheet, Dimensions, FlatList, TouchableWithoutFeedback, ActivityIndicator} from 'react-native';
 import { movieGenre } from '../lib/constants'
 import Header from '../components/Header'
 import ListItem from '../components/ListItem'
@@ -27,7 +28,7 @@ export default function Movies(){
         })
 
     return(
-    <View style={{flex:1, backgroundColor:'#1F1F20'}}> 
+    <SafeAreaView style={{flex:1, backgroundColor:'#1F1F20'}}> 
         <Header/>
         <View style={{height:40}}>
             <FlatList
@@ -35,6 +36,7 @@ export default function Movies(){
                 keyExtractor={(item)=>item.id.toString()}
                 renderItem={({ item }) => <Item item={item} setGenre={setGenre}/>}
                 horizontal
+                contentContainerStyle={{paddingHorizontal:5}}
                 showsHorizontalScrollIndicator={false}
             />
         </View>
@@ -43,7 +45,7 @@ export default function Movies(){
                     :
                     <ListItem items={flattenQueryData(data)} getNext={fetchNextPage}/> 
         }
-    </View>
+    </SafeAreaView>
     );
 };
 

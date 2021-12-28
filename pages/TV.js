@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, ScrollView, View, StyleSheet, Dimensions, FlatList, TouchableWithoutFeedback, ActivityIndicator} from 'react-native';
 import { useInfiniteQuery } from 'react-query'
 import { tvGenre } from '../lib/constants'
@@ -27,7 +28,7 @@ export default function TV(){
         })
 
     return(
-        <View style={{flex:1, backgroundColor:'#1F1F20'}}> 
+        <SafeAreaView style={{flex:1, backgroundColor:'#1F1F20'}}> 
             <Header/>
             <View style={{height:40}}>
                 <FlatList
@@ -43,7 +44,7 @@ export default function TV(){
                      :
                     <ListItem items={flattenQueryData(data)} getNext={fetchNextPage}/> 
             }
-        </View>
+        </SafeAreaView>
     );
 };
 

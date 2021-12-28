@@ -1,4 +1,5 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, View, StyleSheet} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import ListItem from '../components/ListItem'
@@ -8,11 +9,11 @@ function Favorite(){
     const favorites = useSelector( state => state.favorites )
     const dispatch = useDispatch()
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Header/>
             <Text style={styles.sectionTitle}>My Favorites</Text>
             <ListItem items={favorites}/>
-        </View>
+        </SafeAreaView>
     )
 }
 

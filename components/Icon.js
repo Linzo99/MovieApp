@@ -9,8 +9,8 @@ const Icon = ({ children }) => (
 
 const styles = StyleSheet.create({
     button:{
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
         borderRadius: 40,
         display: 'flex',
         justifyContent: 'center',

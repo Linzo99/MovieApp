@@ -5,7 +5,7 @@ import { Text, View, StyleSheet, FlatList, ActivityIndicator} from 'react-native
 import { flattenQueryData } from '../helpers'
 
 const Section = ({item:section}) => {
-    const { title, get } = section
+    const { title, get, paging } = section
     const { data, isLoading, fetchNextPage} = useInfiniteQuery(title, get, {
         getNextPageParam: lastPage => {
             const { page, total_pages} = lastPage
@@ -27,6 +27,9 @@ const Section = ({item:section}) => {
                         renderItem={({item}) => <Item item={item} large={section.large}/> }
                         keyExtractor={(item, i)=>i.toString()}
                         horizontal
+                        pagingEnabled={paging}
+                        decelerationRate={0}
+                        bounces={false}
                         onEndReached={ () => fetchNextPage()}
                         showsHorizontalScrollIndicator={false}
                         onEndReachedThreshold={0.5}
@@ -42,9 +45,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     sectionTitle:{
-        marginLeft: 10,
+        marginLeft: 2,
         marginBottom: 10,
-        fontSize:18,
+        fontSize:16,
         color: 'white'
     },
     actContainer:{

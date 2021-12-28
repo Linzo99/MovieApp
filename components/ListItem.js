@@ -1,17 +1,17 @@
 import React from 'react';
-import { ImageBackground, View, StyleSheet, Dimensions, TouchableWithoutFeedback, FlatList, Text} from 'react-native';
+import { ImageBackground, View, StyleSheet, TouchableWithoutFeedback, FlatList, Text} from 'react-native';
 import { getImage } from '../lib/api/index'
 import { useNavigation } from '@react-navigation/native'
+import Item from './Item'
 
-const { width } = Dimensions.get('window')
-
-const renderItem = ( item, navigation ) => {
+const renderItem = ( {item} ) => {
+    const navigation = useNavigation()
     const getDate = () => {
         if(item.release_date) return  String(item?.release_date).split('-')[0]
     }
     return(
     <TouchableWithoutFeedback onPress={() => navigation.navigate('detail', {item})}>
-        <View style={{width:width/3-1, marginRight:1, marginBottom:1, height:180}}>
+        <View style={{ marginRight:1, marginBottom:1, height:180}}>
             <ImageBackground style={{flex:1, width:'100%', height:'100%'}} source={{uri:getImage(item.poster_path, 200)}}>
                 <View style={styles.info}>
                     <Text style={styles.text}>{item.vote_average}</Text>
@@ -24,12 +24,11 @@ const renderItem = ( item, navigation ) => {
 }
 
 const ListItem = ({ items, getNext}) => {
-    const navigation = useNavigation()
     return(
             <FlatList
                 data={items}
                 keyExtractor={(item, i) => i.toString()}
-                renderItem={({ item }) => renderItem(item, navigation) }
+                renderItem={({ item }) => <Item item={item} simple/> }
                 onEndReached={()=> getNext && getNext()}
                 showsVerticalScrollIndicator={false}
                 onEndReachedThreshold={0.5}

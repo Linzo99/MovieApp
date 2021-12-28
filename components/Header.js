@@ -35,14 +35,14 @@ const Header = () => {
     return(
         <View style={styles.header}>
             {search===null ? 
-                <Text style={styles.headerText}>SenMovie</Text>
+                <Text style={styles.headerText}>SENMOVIE</Text>
                 :
                 <>
                     <EntyIcon onPress={()=>setSearch(null)} name="cross" size={25} fontSize={12} color="white"/>
                     <TextInput placeholder="Search" placeholderTextColor="white" style={styles.textInput} onChange={text=>setSearch(text)} autoFocus/>
                 </>
             }
-            <Icon onPress={()=>setSearch('')} name="search1" backgroundColor='transparent' size={25} color="white"/>
+            <Icon onPress={()=>setSearch('')} name="search1" backgroundColor='transparent' size={20} color="white"/>
         </View>
     )
 }
@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     header:{
         width: '100%', 
         height: 56,
-        marginTop: 14,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
+        backgroundColor: 'rgba(0,0,0,.1)',
     },
     headerThird:{
         width: '100%', 
@@ -68,14 +68,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'flex-end',
         backgroundColor:'rgba(0,0,0,0.1)',
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         paddingBottom:5,
         zIndex: 10,
     },
     headerText:{
-        color:'white',
-        fontSize: 18, 
+        color:'rgba(255,0,0,.7)',
+        fontSize: 20, 
         fontWeight: 'bold',
+        textShadowColor: 'white',
+        textShadowOffset:{widht:4, height:2},
+        textShadowRadius: 5
     },
     textInput:{
         flex:1,
